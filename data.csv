@@ -8,19 +8,3 @@ Plot Revenue according to Date in yellow	<|{data}|chart|mode=lines|x=Date|y=Sale
 Plot Sales in blue and Revenue in green according to Date	<|{data}|chart|mode=lines|x=Date|y[1]=Sales|y[2]=Revenue|color[1]=blue|color[2]=green|>		
 Plot Revenue by Date in a red dashed line and Sales in a yellow Dotted line	<|{data}|chart|mode=lines|x=Date|y[1]=Revenue|y[2]=Sales|line[1]=dash|line[2]=dot|color[1]=red|color[2]=yellow|>		
 Plot Date according to Sales	<|{data}|chart|mode=lines|x=Sales|y=Date|>		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
