@@ -1,7 +1,7 @@
 # TaipyCopilot
 
 <p align="center">
-  <img src="media/app.png" alt="App" width="100%"/>
+  <img src="media/app-new.png" alt="App" width="100%"/>
 </p>
 
 Converts English sentences to Taipy Web App elements

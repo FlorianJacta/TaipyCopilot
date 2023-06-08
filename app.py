@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "ENTER YOUR HUGGING FACE API KEY HERE"}
+headers = {"Authorization": "Bearer ENTER YOU API KEY HERE"}
 
 DATA_PATH = "data.csv"
 
@@ -78,7 +78,12 @@ result = ""
 
 
 page = """
+Enter your instruction here:
 <|{instruction}|input|on_action=on_button_action|class_name=fullwidth|>
+
+<|Data|expandable|
+<|{data}|table|width=100%|>
+|>
 
 <|part|partial={p}|>
 """
