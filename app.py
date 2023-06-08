@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "ENTER YOUR HUGGING FACE API KEY HERE"}
 
 DATA_PATH = "data.csv"
 
@@ -70,6 +70,7 @@ def prompt(instruction: str) -> str:
 def on_button_action(state):
     state.result = prompt(state.instruction)
     state.p.update_content(state, state.result)
+    print(state.result)
 
 
 instruction = ""

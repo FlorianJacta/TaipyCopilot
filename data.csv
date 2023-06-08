@@ -1,10 +1,14 @@
 instruction	code	category	subcategory
-Plot Sales according to Date	<|{data}|chart|mode=lines|x=Date|y=Sales|>		
-Plot Sales and Revenue according to Date	<|{data}|chart|mode=lines|x=Date|y[1]=Sales|y[2]=Revenue|>		
-Plot Sales according to Date on a Dashed line	<|{data}|chart|mode=lines|x=Date|y=Sales|line=dash|>		
-Plot Revenue by Date on a dotted line	<|{data}|chart|mode=lines|x=Date|y=Sales|line=dot|>		
-Plot Sales by Date in Red	<|{data}|chart|mode=lines|x=Date|y=Sales|color=Red|>		
-Plot Revenue according to Date in yellow	<|{data}|chart|mode=lines|x=Date|y=Sales|color=Yellow|>		
-Plot Sales in blue and Revenue in green according to Date	<|{data}|chart|mode=lines|x=Date|y[1]=Sales|y[2]=Revenue|color[1]=blue|color[2]=green|>		
-Plot Revenue by Date in a red dashed line and Sales in a yellow Dotted line	<|{data}|chart|mode=lines|x=Date|y[1]=Revenue|y[2]=Sales|line[1]=dash|line[2]=dot|color[1]=red|color[2]=yellow|>		
-Plot Date according to Sales	<|{data}|chart|mode=lines|x=Sales|y=Date|>		
+Plot Sales according to Date	<|{data}|chart|type=lines|x=Date|y=Sales|>		
+Plot Sales and Revenue according to Date	<|{data}|chart|type=lines|x=Date|y[1]=Sales|y[2]=Revenue|>		
+Plot Sales according to Date on a Dashed line	<|{data}|chart|type=lines|x=Date|y=Sales|line=dash|>		
+Plot Revenue by Date on a dotted line	<|{data}|chart|type=lines|x=Date|y=Sales|line=dot|>		
+Plot Sales by Date in Red	<|{data}|chart|type=lines|x=Date|y=Sales|color=Red|>		
+Plot Revenue according to Date in yellow	<|{data}|chart|type=lines|x=Date|y=Sales|color=Yellow|>		
+Plot Sales in blue and Revenue in green according to Date	<|{data}|chart|type=lines|x=Date|y[1]=Sales|y[2]=Revenue|color[1]=blue|color[2]=green|>		
+Plot Revenue by Date in a red dashed line and Sales in a yellow Dotted line	<|{data}|chart|type=lines|x=Date|y[1]=Revenue|y[2]=Sales|line[1]=dash|line[2]=dot|color[1]=red|color[2]=yellow|>		
+Plot Date according to Sales	<|{data}|chart|type=lines|x=Date|y=Sales|>
+Plot in a bar chart the Sales according to Date	<|{data}|chart|type=bar|x=Date|y=Sales|>
+Plot in a bar chart the Sales according to Date and Revenue according to Date	<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|>
+Plot Sales and Revenue by Date in a bar chart	<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|>
+Plot Sales in a horizontal bar chart according to Date	<|{data}|chart|type=bar|x=Date|y=Sales|orientation="h"|>
