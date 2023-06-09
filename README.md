@@ -12,7 +12,11 @@ TaipyCopilot works with few-shot learning on StarCoder.
 
 Currently supports:
 - line plots with multiple lines, colors and line styles
-- bar charts
+- bar charts with multiple bars, colors and orientation
+- scatter plots with multiple data columns, colors
+- title
+- simple histograms
+- simple pie charts
 
 Known issues:
 - Long prompts may cause StarCoder to repeat unfinished code, causing syntax errors
@@ -39,7 +43,7 @@ pip install -r requirements.txt
 
 ```python
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "ENTER YOUR HUGGING FACE API KEY HERE"}
+headers = {"Authorization": "Bearer ENTER YOUR API KEY HERE"}
 ```
 
 **4.** Run `app.py`

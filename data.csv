@@ -1,14 +1,27 @@
-instruction	code	category	subcategory
-Plot Sales according to Date	<|{data}|chart|type=lines|x=Date|y=Sales|>		
-Plot Sales and Revenue according to Date	<|{data}|chart|type=lines|x=Date|y[1]=Sales|y[2]=Revenue|>		
-Plot Sales according to Date on a Dashed line	<|{data}|chart|type=lines|x=Date|y=Sales|line=dash|>		
-Plot Revenue by Date on a dotted line	<|{data}|chart|type=lines|x=Date|y=Sales|line=dot|>		
-Plot Sales by Date in Red	<|{data}|chart|type=lines|x=Date|y=Sales|color=Red|>		
-Plot Revenue according to Date in yellow	<|{data}|chart|type=lines|x=Date|y=Sales|color=Yellow|>		
-Plot Sales in blue and Revenue in green according to Date	<|{data}|chart|type=lines|x=Date|y[1]=Sales|y[2]=Revenue|color[1]=blue|color[2]=green|>		
-Plot Revenue by Date in a red dashed line and Sales in a yellow Dotted line	<|{data}|chart|type=lines|x=Date|y[1]=Revenue|y[2]=Sales|line[1]=dash|line[2]=dot|color[1]=red|color[2]=yellow|>		
-Plot Date according to Sales	<|{data}|chart|type=lines|x=Date|y=Sales|>
-Plot in a bar chart the Sales according to Date	<|{data}|chart|type=bar|x=Date|y=Sales|>
-Plot in a bar chart the Sales according to Date and Revenue according to Date	<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|>
-Plot Sales and Revenue by Date in a bar chart	<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|>
-Plot Sales in a horizontal bar chart according to Date	<|{data}|chart|type=bar|x=Date|y=Sales|orientation="h"|>
+instruction;code
+Plot Sales according to Date in a line chart;<|{data}|chart|type=lines|x=Date|y=Sales|>
+Plot Sales according to Date in a line chart titled ""Sales according to Revenue""";<|{data}|chart|type=lines|x=Date|y=Sales|title=Sales according to Revenue|>
+Plot Sales and Revenue according to Date;<|{data}|chart|type=lines|x=Date|y[1]=Sales|y[2]=Revenue|>
+Plot Sales according to Date on a Dashed line;<|{data}|chart|type=lines|x=Date|y=Sales|line=dash|>
+Plot Revenue by Date on a dotted line;<|{data}|chart|type=lines|x=Date|y=Sales|line=dot|>
+Plot Sales by Date in Red;<|{data}|chart|type=lines|x=Date|y=Sales|color=Red|>
+Plot Revenue according to Date in yellow;<|{data}|chart|type=lines|x=Date|y=Sales|color=Yellow|>
+Plot Revenue according to Date in yellow titled Revenue Plot;<|{data}|chart|type=lines|x=Date|y=Sales|color=Yellow|title=Revenue Plot>
+Plot Sales in blue and Revenue in green according to Date;<|{data}|chart|type=lines|x=Date|y[1]=Sales|y[2]=Revenue|color[1]=blue|color[2]=green|>
+Plot Revenue by Date in a red dashed line and Sales in a yellow Dotted line;<|{data}|chart|type=lines|x=Date|y[1]=Revenue|y[2]=Sales|line[1]=dash|line[2]=dot|color[1]=red|color[2]=yellow|>
+Display Date according to Sales;<|{data}|chart|type=lines|x=Date|y=Sales|>
+Plot in a bar chart the Sales according to Date;<|{data}|chart|type=bar|x=Date|y=Sales|>
+Plot in a bar chart the Sales according to Date and Revenue according to Date;<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|>
+Plot Sales and Revenue by Date in a bar chart;<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|>
+Plot in a bar chart the Sales according to Date and Revenue according to Date titled Finance;<|{data}|chart|type=bar|x=Date|y[1]=Sales|y[2]=Revenue|title=Finance|>
+Plot in a scatter plot Sales according to Date;<|{data}|chart|type=scatter|mode=markers|x=Date|y=Sales|>
+Draw Sales and Revenue by Date in a scatter plot;<|{data}|chart|type=scatter|mode=markers|x=Date|y[1]=Sales|y[2]=Revenue|>
+Plot Revenue in green points and Sales in yellow points by Date;<|{data}|chart|type=scatter|mode=markers|x=Date|y[1]=Revenue|y[2]=Sales|color[1]=green|color[2]=yellow|>
+Plot a histogram of Sales;<|{data}|chart|type=histogram|x=Sales|>
+Display a horizontal histogram of Sales;<|{data}|chart|type=histogram|y=Sales|>
+Plot the distribution of Sales and Revenue;<|{data}|chart|type=histogram|x[1]=Sales|x[2]=Revenue|>
+Plot the distribution of Sales and Revenue titled ""Sales and Revenue Distribution"";<|{data}|chart|type=histogram|x[1]=Sales|x[2]=Revenue|title=Sales and Revenue Distribution|>
+Display a horizontal distribution of Sales and Revenue titled ""Sales and Revenue Distribution"";<|{data}|chart|type=histogram|y[1]=Sales|y[2]=Revenue|title=Sales and Revenue Distribution|>
+Plot a pie chart of Sales by Date;<|{data}|chart|type=pie|values=Sales|labels=Date|>
+Draw a pie chart of Sales by Date titled ""Sales Pie Chart"";<|{data}|chart|type=pie|values=Sales|labels=Date|title=Sales Pie Chart|>
+Plot a pie chart of Revenue by Date;<|{data}|chart|type=pie|values=Revenue|labels=Date|>

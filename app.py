@@ -4,11 +4,11 @@ import pandas as pd
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "Bearer ENTER YOU API KEY HERE"}
+headers = {"Authorization": "Bearer ENTER YOUR API KEY HERE"}
 
 DATA_PATH = "data.csv"
 
-df = pd.read_csv(DATA_PATH, sep="\t")
+df = pd.read_csv(DATA_PATH, sep=";")
 data = pd.DataFrame(
     {
         "Date": pd.to_datetime(
@@ -31,12 +31,21 @@ for instruction, code in zip(df["instruction"], df["code"]):
     context += f"{instruction}\n{code}\n"
 
 
-def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
+def query(payload: dict) -> dict:
+    """
+    Queries StarCoder API
+
+    Args:
+        payload: Payload for StarCoder API
+
+    Returns:
+        dict: StarCoder API response
+    """
+    response = requests.post(API_URL, headers=headers, json=payload, timeout=20)
     return response.json()
 
 
-def prompt(instruction: str) -> str:
+def prompt(input_instruction: str) -> str:
     """
     Prompts StarCoder to generate Taipy GUI code
 
@@ -46,28 +55,35 @@ def prompt(instruction: str) -> str:
     Returns:
         str: Taipy GUI code
     """
-    prompt = f"{context}\n{instruction}\n"
+    current_prompt = f"{context}\n{input_instruction}\n"
     output = ""
-    result = ""
+    final_result = ""
 
+    # Re-query until the output contains the closing tag
     timeout = 0
     while ">" not in output and timeout < 10:
         output = query(
             {
-                "inputs": prompt + output,
+                "inputs": current_prompt + output,
                 "parameters": {
                     "return_full_text": False,
                 },
             }
         )[0]["generated_text"]
         timeout += 1
-        result += output
+        final_result += output
 
-    code = f"""<{result.split("<")[1].split(">")[0]}>"""
-    return code
+    output_code = f"""<{final_result.split("<")[1].split(">")[0]}>"""
+    return output_code
 
 
-def on_button_action(state):
+def on_enter(state) -> None:
+    """
+    Prompt StarCoder to generate Taipy GUI code when user presses enter
+
+    Args:
+        state (State): Taipy GUI state
+    """
     state.result = prompt(state.instruction)
     state.p.update_content(state, state.result)
     print(state.result)
@@ -78,8 +94,10 @@ result = ""
 
 
 page = """
+# Taipy**Copilot**{: .color-primary}
+
 Enter your instruction here:
-<|{instruction}|input|on_action=on_button_action|class_name=fullwidth|>
+<|{instruction}|input|on_action=on_enter|class_name=fullwidth|>
 
 <|Data|expandable|
 <|{data}|table|width=100%|>
