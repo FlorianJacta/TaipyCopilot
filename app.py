@@ -77,7 +77,7 @@ def prompt(input_instruction: str) -> str:
     return output_code
 
 
-def on_enter(state) -> None:
+def on_enter_press(state) -> None:
     """
     Prompt StarCoder to generate Taipy GUI code when user presses enter
 
@@ -97,7 +97,7 @@ page = """
 # Taipy**Copilot**{: .color-primary}
 
 Enter your instruction here:
-<|{instruction}|input|on_action=on_enter|class_name=fullwidth|>
+<|{instruction}|input|on_action=on_enter_press|class_name=fullwidth|>
 
 <|Data|expandable|
 <|{data}|table|width=100%|>
