@@ -39,11 +39,11 @@ git clone https://github.com/AlexandreSajus/TaipyLLM.git
 pip install -r requirements.txt
 ```
 
-**3.** Add your Hugging Face API key to `app.py` line 7
+**3.** Add your Hugging Face API key to `app.py` line 7 **after `Bearer `**	
 
 ```python
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "Bearer ENTER YOUR API KEY HERE"}
+headers = {"Authorization": "Bearer [ENTER-YOUR-API-KEY-HERE]"}
 ```
 
 **4.** Run `app.py`
