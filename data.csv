@@ -25,3 +25,5 @@ Display a horizontal distribution of Sales and Revenue titled ""Sales and Revenu
 Plot a pie chart of Sales by Date;<|{data}|chart|type=pie|values=Sales|labels=Date|>
 Draw a pie chart of Sales by Date titled ""Sales Pie Chart"";<|{data}|chart|type=pie|values=Sales|labels=Date|title=Sales Pie Chart|>
 Plot a pie chart of Revenue by Date;<|{data}|chart|type=pie|values=Revenue|labels=Date|>
+Plot a pie chart of Usage by Energy;<|{data}|chart|type=pie|values=Usage|labels=Energy|>
+Plot a pie chart of Usage by Energy titled ""World Energy Distribution"";<|{data}|chart|type=pie|values=Usage|labels=Energy|title=World Energy Distribution|>

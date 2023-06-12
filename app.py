@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "Bearer ENTER YOUR API KEY HERE"}
+headers = {"Authorization": "Bearer [ENTER-YOUR-API-KEY-HERE]"}
 
 DATA_PATH = "data.csv"
 
@@ -24,6 +24,8 @@ data = pd.DataFrame(
         ),
         "Sales": [100, 250, 500, 400, 450, 600, 650],
         "Revenue": [150, 200, 600, 800, 850, 900, 950],
+        "Energy": ["Oil", "Coal", "Gas", "Nuclear", "Hydro", "Solar", "Wind"],
+        "Usage": [0.33, 0.27, 0.21, 0.06, 0.05, 0.05, 0.04],
     }
 )
 context = ""
@@ -100,7 +102,7 @@ Enter your instruction here:
 <|{instruction}|input|on_action=on_enter_press|class_name=fullwidth|>
 
 <|Data|expandable|
-<|{data}|table|width=100%|>
+<|{data[:5]}|table|width=100%|show_all=True|>
 |>
 
 <|part|partial={p}|>
