@@ -1,10 +1,12 @@
-from taipy import Gui
+from taipy.gui import Gui, notify
 
 import pandas as pd
 import requests
+import re
+import os
 
 API_URL = "https://api-inference.huggingface.co/models/bigcode/starcoder"
-headers = {"Authorization": "Bearer [ENTER-YOUR-API-KEY-HERE]"}
+headers = {"Authorization": f"Bearer {os.environ['HUGGING_FACE_API_TOKEN']}"}
 
 DATA_PATH = "data.csv"
 
@@ -57,26 +59,36 @@ def prompt(input_instruction: str) -> str:
     Returns:
         str: Taipy GUI code
     """
+    def _check_input(text):
+        return not ('<|' in text or '|>' in text)
+    def _check_output(text):
+        pattern = r'<.*\|chart\|.*>'
+        return bool(re.search(pattern, text))
+    
     current_prompt = f"{context}\n{input_instruction}\n"
     output = ""
     final_result = ""
+    if _check_input(input_instruction):
+        # Re-query until the output contains the closing tag
+        timeout = 0
+        while ">" not in output and timeout < 10:
+            output = query(
+                {
+                    "inputs": current_prompt + output,
+                    "parameters": {
+                        "return_full_text": False,
+                    },
+                }
+            )[0]["generated_text"]
+            timeout += 1
+            final_result += output
 
-    # Re-query until the output contains the closing tag
-    timeout = 0
-    while ">" not in output and timeout < 10:
-        output = query(
-            {
-                "inputs": current_prompt + output,
-                "parameters": {
-                    "return_full_text": False,
-                },
-            }
-        )[0]["generated_text"]
-        timeout += 1
-        final_result += output
+        output_code = f"""<{final_result.split("<")[1].split(">")[0]}>"""
 
-    output_code = f"""<{final_result.split("<")[1].split(">")[0]}>"""
-    return output_code
+        if _check_output(output_code):
+            return output_code
+
+    return False
 
 
 def on_enter_press(state) -> None:
@@ -86,9 +98,12 @@ def on_enter_press(state) -> None:
     Args:
         state (State): Taipy GUI state
     """
-    state.result = prompt(state.instruction)
-    state.p.update_content(state, state.result)
-    print(state.result)
+    result = prompt(state.instruction)
+    if result:
+        state.result = result
+        state.p.update_content(state, state.result)
+    else:
+        notify(state, "Error", 'Could not generate code')
 
 
 instruction = ""
